@@ -93,8 +93,8 @@ Clone the manifests repo:
 ## Apply resources:
 ```
 kubectl apply -f demo-flask-app/deployment.yaml
-kubectl apply -f demo-flask-app/aks_service.yaml
-kubectl apply -f demo-flask-app/aks_ingress.yaml
+kubectl apply -f demo-flask-app/service_gke.yaml
+kubectl apply -f demo-flask-app/ingress_gke.yaml
 ```
 ## ✅ Verify and Test
 
@@ -104,11 +104,14 @@ kubectl get deployments
 kubectl get pods
 kubectl get services
 kubectl get ingress
+```
 
 The output will display the ADDRESS field, which contains the External IP of the Ingress Controller.
 
 Test your service:
 `curl http://<EXTERNAL-IP>/`
+
+---
 
 ## Variables Reference (from `variables.tf`)
 | Name                     | Description                                         | Default               |
@@ -151,9 +154,6 @@ Test your service:
 - **Permission denied**: Check IAM roles and service account permissions.
 - **kubectl not authorized**: Use the output `kubeconfig_command` to authenticate.
 - **Resource conflicts**: Destroy old resources or use unique names.
-
-## License
-MIT License. See [LICENSE](LICENSE) for details.
 
 ## Contributions
 Contributions and improvements are welcome! Please open issues or pull requests.
