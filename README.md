@@ -85,6 +85,31 @@ export GOOGLE_APPLICATION_CREDENTIALS="$(pwd)/terraform-key.json"
    gcloud container clusters get-credentials <cluster_name> --region <region> --project <project_id>
    ```
 
+## Deploy Your Microservices
+Clone the manifests repo:
+`git clone https://github.com/rajeshgoyalg/demo-kubernetes-configs`
+`cd demo-kubernetes-configs`
+
+## Apply resources:
+```
+kubectl apply -f demo-flask-app/deployment.yaml
+kubectl apply -f demo-flask-app/aks_service.yaml
+kubectl apply -f demo-flask-app/aks_ingress.yaml
+```
+## ✅ Verify and Test
+
+Check resources:
+```
+kubectl get deployments
+kubectl get pods
+kubectl get services
+kubectl get ingress
+
+The output will display the ADDRESS field, which contains the External IP of the Ingress Controller.
+
+Test your service:
+`curl http://<EXTERNAL-IP>/`
+
 ## Variables Reference (from `variables.tf`)
 | Name                     | Description                                         | Default               |
 |--------------------------|-----------------------------------------------------|-----------------------|
