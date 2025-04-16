@@ -14,34 +14,14 @@ variable "cluster_name" {
   default     = "demo-gke-cluster"
 }
 
-variable "vpc_name" {
-  description = "Name for the VPC"
+variable "vpc_id" {
+  description = "VPC ID for the cluster"
   type        = string
-  default     = "gke-vpc"
 }
 
-variable "subnet_name" {
-  description = "Name for the subnet"
+variable "subnet_id" {
+  description = "Subnet ID for the cluster"
   type        = string
-  default     = "gke-subnet"
-}
-
-variable "subnet_cidr" {
-  description = "CIDR block for the subnet"
-  type        = string
-  default     = "10.0.0.0/16"
-}
-
-variable "workload_sa_id" {
-  description = "Service account ID for GKE workload identity"
-  type        = string
-  default     = "gke-workload-sa"
-}
-
-variable "workload_sa_display_name" {
-  description = "Display name for the GKE workload identity service account"
-  type        = string
-  default     = "GKE Workload Identity SA"
 }
 
 variable "node_pool_name" {
@@ -57,13 +37,13 @@ variable "node_count" {
 }
 
 variable "machine_type" {
-  description = "Machine type for GKE nodes"
+  description = "Machine type for nodes"
   type        = string
   default     = "e2-medium"
 }
 
 variable "disk_size_gb" {
-  description = "Disk size in GB for GKE nodes"
+  description = "Disk size for each node (GB)"
   type        = number
   default     = 30
 }
